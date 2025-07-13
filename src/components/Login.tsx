@@ -17,26 +17,28 @@ const Login = () => {
 
     const result = await loginUser(email, password);
 
-    if (result.error) {
+    if (!result.success) {
       setError(result.error);
       setTimeout(() => setError(null), 3000);
     } else {
-      navigate("/dashboard");
+      navigate("/home");
     }
 
     setLoading(false);
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin} className="max-w-md m-auto pt-24">
+    <div className="flex flex-col items-center justify-center">
+      <form onSubmit={handleLogin} className="w-md m-auto pt-24 p-10">
         <h2 className="font-bold pb-2">Login</h2>
         <p>
           Don't have an account yet? <Link to="/signup">Sign up</Link>
         </p>
         <div className="flex flex-col py-4">
           <input
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             className="p-3 mt-2"
             type="email"
             name="email"
@@ -46,7 +48,9 @@ const Login = () => {
         </div>
         <div className="flex flex-col py-4">
           <input
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
             className="p-3 mt-2"
             type="password"
             name="password"
@@ -54,7 +58,9 @@ const Login = () => {
             placeholder="Password"
           />
         </div>
-        <button className="w-full mt-4" disabled={loading}>Login</button>
+        <button className="w-full mt-4 mb-10" disabled={loading}>
+          Login
+        </button>
         {error && <p className="text-red-600 text-center pt-4">{error}</p>}
       </form>
     </div>
