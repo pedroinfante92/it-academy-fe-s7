@@ -13,19 +13,6 @@ This project is a web application built with React, TypeScript, and Vite, utiliz
 * **React Router DOM:** Handles client-side routing.
 * **ESLint:** Configured with type-aware linting rules for code quality and consistency, including `eslint-plugin-react-x` and `eslint-plugin-react-dom` for React-specific best practices.
 
-## Project Structure
-
-* `public/`: Static assets.
-* `src/`:
-    * `main.tsx`: Entry point of the React application.
-    * `App.tsx`: Main application component.
-    * Other components, hooks, services, etc.
-* `index.html`: Main HTML file.
-* `vite.config.ts`: Vite configuration.
-* `tsconfig.json`, `tsconfig.node.json`, `tsconfig.app.json`: TypeScript configurations.
-* `eslint.config.js`: ESLint configuration.
-* `package.json`: Project dependencies and scripts.
-
 ## Getting Started
 
 Follow these steps to set up and run the project locally.
