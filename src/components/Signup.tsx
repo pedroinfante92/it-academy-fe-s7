@@ -19,28 +19,30 @@ const Signup = () => {
       const result = await signUpNewUser(email, password);
 
       if (result.success) {
-        navigate("/dashboard");
+        navigate("/home");
       } else {
         setError(result.error || "Signup failed");
       }
     } catch (error) {
       setError("An unexpected error occurred.");
-      console.error(error)
+      console.error(error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSignUp} className="max-w-md m-auto pt-24">
+    <div className="flex flex-col items-center justify-center">
+      <form onSubmit={handleSignUp} className="w-md m-auto pt-24 p-10">
         <h2 className="font-bold pb-2">Sign up today!</h2>
         <p>
-          Already have an account? <Link to="/">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
         <div className="flex flex-col py-4">
           <input
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setEmail(e.target.value)
+            }
             className="p-3 mt-2"
             type="email"
             name="email"
@@ -50,7 +52,9 @@ const Signup = () => {
         </div>
         <div className="flex flex-col py-4">
           <input
-            onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+              setPassword(e.target.value)
+            }
             className="p-3 mt-2"
             type="password"
             name="password"
@@ -58,7 +62,7 @@ const Signup = () => {
             placeholder="Password"
           />
         </div>
-        <button type="submit" disabled={loading} className="w-full mt-4">
+        <button type="submit" disabled={loading} className="w-full mt-4 mb-10">
           Sign Up
         </button>
         {error && <p className="text-red-600 text-center pt-4">{error}</p>}
