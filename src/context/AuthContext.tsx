@@ -1,8 +1,12 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 import { supabase } from "../supabaseClient";
 import type { Session, User } from "@supabase/supabase-js";
-
-const user = session?.user ?? null;
 
 type AuthResult =
   | { success: true; data: Session | null }
@@ -22,7 +26,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   const [session, setSession] = useState<Session | null>(null);
 
   // Sign up
-  const signUpNewUser = async (email: string, password: string): Promise<AuthResult> => {
+  const signUpNewUser = async (
+    email: string,
+    password: string
+  ): Promise<AuthResult> => {
     const { data, error } = await supabase.auth.signUp({
       email: email.toLowerCase(),
       password: password,
@@ -37,7 +44,10 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
   };
 
   // Login
-  const loginUser = async (email: string, password: string): Promise<AuthResult> => {
+  const loginUser = async (
+    email: string,
+    password: string
+  ): Promise<AuthResult> => {
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email.toLowerCase(),
@@ -93,7 +103,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <AuthContext.Provider
-      value={{ signUpNewUser, loginUser, session, user, signOut }}
+      value={{ signUpNewUser, loginUser, signOut, session, user }}
     >
       {children}
     </AuthContext.Provider>
@@ -102,6 +112,7 @@ export const AuthContextProvider = ({ children }: { children: ReactNode }) => {
 
 export const UserAuth = () => {
   const context = useContext(AuthContext);
-  if (!context) throw new Error("UserAuth must be used within AuthContextProvider");
+  if (!context)
+    throw new Error("UserAuth must be used within AuthContextProvider");
   return context;
 };
