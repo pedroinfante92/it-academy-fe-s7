@@ -1,69 +1,62 @@
-# React + TypeScript + Vite
+# TMDB Project - React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a web application built with React, TypeScript, and Vite, utilizing Tailwind CSS for styling and TanStack Query for data fetching. It also integrates with Supabase for backend services.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **React 19:** Leverages the latest features of React for building user interfaces.
+* **TypeScript:** Provides type safety and improves code maintainability.
+* **Vite 7.x:** Offers a fast and efficient development experience with features like Hot Module Replacement (HMR).
+* **Tailwind CSS:** A utility-first CSS framework for rapid UI development.
+* **TanStack Query:** Manages and caches asynchronous data in React applications.
+* **Supabase:** Integrates with Supabase for backend services (e.g., database, authentication).
+* **React Router DOM:** Handles client-side routing.
+* **ESLint:** Configured with type-aware linting rules for code quality and consistency, including `eslint-plugin-react-x` and `eslint-plugin-react-dom` for React-specific best practices.
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+* `public/`: Static assets.
+* `src/`:
+    * `main.tsx`: Entry point of the React application.
+    * `App.tsx`: Main application component.
+    * Other components, hooks, services, etc.
+* `index.html`: Main HTML file.
+* `vite.config.ts`: Vite configuration.
+* `tsconfig.json`, `tsconfig.node.json`, `tsconfig.app.json`: TypeScript configurations.
+* `eslint.config.js`: ESLint configuration.
+* `package.json`: Project dependencies and scripts.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting Started
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Follow these steps to set up and run the project locally.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Prerequisites
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+* Node.js (LTS version recommended)
+* npm or yarn
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Installation
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Clone the repository:**
+
+    ```bash
+    git clone <your-repository-url>
+    cd it-academy-fe-s7
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+### Running the Development Server
+
+To start the development server with hot module replacement:
+
+```bash
+npm run dev
+# or
+yarn dev
